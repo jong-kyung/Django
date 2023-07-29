@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django 입문</title>
+    <!-- Bootstrap 적용 -->
+    {% load bootstrap5 %}
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
 </head>
 
 <body>
-    <h1>Django 입문</h1>
-    {% block content %}
-    {% endblock %}
-    <hr />
+    <div class="container">
+        <h1>Django 입문</h1>
+        {% block content %}
+        {% endblock %}
+        <hr />
+    </div>
 </body>
 
 </html>

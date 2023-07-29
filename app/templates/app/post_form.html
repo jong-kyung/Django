@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% load bootstrap5 %} 
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        <!-- csrf 공격 방어용 Django 기능 -->
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="저장하기"/>
+    </form>
+{% endblock %}
