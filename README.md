@@ -5,6 +5,8 @@
 - 신속한 개발
 - 클래스 기반 뷰, 함수 기반 뷰 두 방식 모두 유연하게 사용 가능
 - 중복되는 코드가 있는경우 Mixin 객체(상속을 목적으로 만드는 객체)를 만들어 상속하여 사용함
+- 정규식 표현으로 엄격하게 url 패턴 지정이 가능
+- 다양한 포맷의 문자열에 대해서도 템플릿 시스템 기능을 제공(SSR)해줌(ex. Python, Javascript, HTML, CSS 등)
 
 ### Django - View
 - 뷰에서 모든 처리를 하지말 것
@@ -41,7 +43,7 @@ python manage.py makemigrations app # DB에 모델을 생성
 python manage.py migrate app # DB에 테이블 추가
 ```
 
-### Django HTML 페이지
+### Django 라우팅
 ``` HTML
 <!-- 경로 : 앱이름/templates/앱이름 -->
 <HTML> ... </HTML>

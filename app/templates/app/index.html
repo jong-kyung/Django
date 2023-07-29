@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-
-<head>
-    <html lang="ko">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django Page</title>
-</head>
-
-<body>
-    Hello World
-    <h1>Post List</h1>
-
+{% extends 'app/base.html' %}
+{% block content %}
     {% for post in post_list %}
-        <div>{{ post.id }}, {{ post.title }} </div>
+        <div>
+            <a href="/app/{{ post.id }}/">
+            {{ post.id }}, {{ post.title }}
+        </a> 
+    </div>
     {% endfor %}
-</body>
-
-</html>
+{% endblock %}
