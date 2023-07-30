@@ -16,11 +16,11 @@ from environ import Env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = Env() # env 객체 생성
-env_path = BASE_DIR / '.env' # env파일 경로 설정
-if env_path.exists():
-    with env_path.open('rt', encoding='UTF8') as f:
-        env.read_env(f, overwrite = True)
+# env = Env() # env 객체 생성
+# env_path = BASE_DIR / '.env' # env파일 경로 설정
+# if env_path.exists():
+#     with env_path.open('rt', encoding='UTF8') as f:
+#         env.read_env(f, overwrite = True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     # local apps
     'app',
-    'catube'
+    'catube',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -133,11 +134,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# * SMTP 설정
-EMAIL_HOST = env.str('EMAIL_HOST')
-EMAIL_PORT = env.int('EMAIL_PORT')
-EMAIL_USE_SSL = env.bool('EMAIL_UST_SSL')
-EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSSWORD')
+LOGIN_REDIRECT_URL = '/app/' # 로그인 후 이동할 디폴트 주소 설정
 
-DEFAULT_FORM_EMAIL = f'{EMAIL_HOST_USER}@naver.com'
+# # * SMTP 설정
+# EMAIL_HOST = env.str('EMAIL_HOST')
+# EMAIL_PORT = env.int('EMAIL_PORT')
+# EMAIL_USE_SSL = env.bool('EMAIL_UST_SSL')
+# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSSWORD')
+
+# DEFAULT_FORM_EMAIL = f'{EMAIL_HOST_USER}@naver.com'

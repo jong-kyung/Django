@@ -16,6 +16,13 @@
 <body>
     <div class="container">
         <h1>Django 입문</h1>
+        {% if user.is_authenticated %}
+            <p>logged by {{ user }}
+                <a href="/accounts/logout">logout</a>
+            </p>
+        {% else %}
+            <a href="/accounts/login">login</a>
+        {% endif %}
         {% block content %}
         {% endblock %}
         <hr />
