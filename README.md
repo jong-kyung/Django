@@ -63,7 +63,7 @@ urlpatterns = [
 ```
 ### Django urlpatterns
 ``` python
-# settings
+# mysite/settings
 ROOT_URLCONF = 'mysite.urls' # root
 urlpatterns = [ # 라우팅페이지
     path('app/', include('app.urls'))
@@ -79,7 +79,36 @@ urlpatterns = [
 ```
 
 ## Django 라이브러리
-### Django-rest-framework
+### Django-environ
+- 환경변수 설정용 라이브러리
+- 사용방법
+``` python
+# .env
+EMAIL_HOST = smtp주소
+EMAIL_PORT = port번호
+EMAIL_USE_SSL = true
+EMAIL_HOST_USER = your-id
+EMAIL_HOST_PASSWORD = your-pw
+
+# mysite/settings
+from environ import Env
+
+env = Env() # env 객체 생성
+env_path = BASE_DIR / '.env' # env파일 경로 설정
+if env_path.exists():
+    with env_path.open('rt', encoding='UTF8') as f:
+        env.read_env(f, overwrite = True)
+...
+
+# SMTP 설정
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_USE_SSL = env.bool('EMAIL_UST_SSL')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSSWORD')
+
+DEFAULT_FORM_EMAIL = f'{EMAIL_HOST_USER}@naver.com'
+```
 
 ### Pillow
 - 이미지 생성
