@@ -40,9 +40,29 @@ INSTALLED_APPS = [
 ### Django models 
 ``` python
 python manage.py makemigrations app # DB에 모델을 생성
+python manage.py sqlmigrate app 0002 # 어떤 마이그레이션이 실행될 것 인지 확인
+python manage.py showmigrations app # 마이그레이션 적용 내역 확인
 python manage.py migrate app # DB에 테이블 추가
 ```
 
+### Django SQL 쿼리내역 출력
+``` python
+# settings.py
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+}, },
+    "loggers": {
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+}, }
+```
 ### Django 라우팅
 ``` HTML
 <!-- 경로 : 앱이름/templates/앱이름 -->
@@ -109,6 +129,3 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSSWORD')
 
 DEFAULT_FORM_EMAIL = f'{EMAIL_HOST_USER}@naver.com'
 ```
-
-### Pillow
-- 이미지 생성
